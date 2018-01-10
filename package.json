@@ -1,0 +1,10 @@
+{
+    "name": "asterisk-dev-bot",
+    "version": "1.0.0",
+    "description": "same",
+    "main": "bot.js",
+    "author": "Jalen Cureton",
+    "dependencies": {
+        "discord.io": "github:woor/discord.io#gateway_v6"
+    }
+}
