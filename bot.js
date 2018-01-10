@@ -33,10 +33,11 @@ var Tasks = function(name){
                 return this.mName + " has no tasks assigned.";
             }
             
-            str = this.mName+"'s Tasks:\n"
+            str ="	__"+ this.mName+"'s Tasks:__ \n"
             for(i = 0; i < this.mTasks.length; i++)
             {
-                str += i +" - " + this.mTasks[i].tag + " \n";
+                str += "*id: "+ i +"  Tag: " + this.mTasks[i].tag + "* \n";
+                str += "**" + this.mTasks[i].description + "** \n";
             }
 
             return str;
