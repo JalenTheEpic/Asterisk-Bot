@@ -22,48 +22,42 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     // It will listen for messages that will start with `!`
     if (message.substring(0, 1) == '!') {
         var args = message.substring(1).split(' ');
-        var cmd = args[0];
-        if (cmd == "ast"){
-            if(length(args) > 1)
-                cmd = args[1]
-            else
-                cmd = ""
-
         
-            args = args.splice(1);
-            switch(cmd) {
-                // !ping
-                case 'ping':
-                    bot.sendMessage({
-                        to: channelID,
-                        message: 'Pong!'
-                    });
-                case 'ayy':
-                    bot.sendMessage({
-                        to: channelID,
-                        message: 'lmao'
-                    });
+        var cmd = args[0];
+        
+        args = args.splice(1);
+        switch(cmd) {
+            // !ping
+            case 'ping':
+                bot.sendMessage({
+                    to: channelID,
+                    message: 'Pong!'
+                });
+            case 'ayy':
+                bot.sendMessage({
+                    to: channelID,
+                    message: 'lmao'
+                });
 
-                case 'progress':
-                    bot.sendMessage({
-                        to: channelID,
-                        message: 'Jalen is currently programming me... Please be patient!'
-                    });
-                
-                case 'progress':
-                    bot.sendMessage({
-                        to: channelID,
-                        message: 'Jalen is currently programming me... Please be patient!'
-                    });
-                break;
+            case 'progress':
+                bot.sendMessage({
+                    to: channelID,
+                    message: 'Jalen is currently programming me... Please be patient!'
+                });
+            
+            case 'progress':
+                bot.sendMessage({
+                    to: channelID,
+                    message: 'Jalen is currently programming me... Please be patient!'
+                });
+            break;
 
-                default:
-                    bot.sendMessage({
-                        to: channelID,
-                        message: 'wtf?'
-                    });
-                // Just add any case commands if you want to..
-            }
-        }
+            default:
+                bot.sendMessage({
+                    to: channelID,
+                    message: 'wtf?'
+                });
+            // Just add any case commands if you want to..
+         }
      }
 });
