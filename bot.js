@@ -33,24 +33,21 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     to: channelID,
                     message: 'Pong!'
                 });
+                break;
+                
             case 'ayy':
                 bot.sendMessage({
                     to: channelID,
                     message: 'lmao'
                 });
+                break;
 
             case 'progress':
                 bot.sendMessage({
                     to: channelID,
                     message: 'Jalen is currently programming me... Please be patient!'
                 });
-            
-            case 'progress':
-                bot.sendMessage({
-                    to: channelID,
-                    message: 'Jalen is currently programming me... Please be patient!'
-                });
-            break;
+                break;
 
             default:
                 bot.sendMessage({
