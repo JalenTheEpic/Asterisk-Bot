@@ -1,5 +1,4 @@
-var Tasks = function(name)
-{
+var Tasks = function(name){
     
         //!----------------Variable Declarations----------------!
 
@@ -7,8 +6,7 @@ var Tasks = function(name)
         this.mName = name;
         this.mTasks = []
         //!----------------Function Declarations----------------!
-        this.addTask = function(tag,description, days)
-        {
+        this.addTask = function(tag,description, days){
             task = {}
             task.tag = tag
             task.description = description
@@ -17,8 +15,7 @@ var Tasks = function(name)
             this.mTasks.push(task)
         }
 
-        this.removeTask = function(id)
-        {
+        this.removeTask = function(id){
             if(id >= this.mTasks.length || id < 0){
                 //error
             }else{
@@ -26,31 +23,28 @@ var Tasks = function(name)
             }
         }
 
-        this.clearTasks = function()
-        {
+        this.clearTasks = function(){
             this.mTasks = []
         }
 
-        this.getTaskString = function()
-        {
+        this.getTaskString = function(){
             //base case
             if(this.mTasks.length == 0){
                 return this.mName + " has no tasks assigned.";
             }
             
-            str ="```diff\n--"+ this.mName+"'s Tasks:\n"
+            str ="	__"+ this.mName+"'s Tasks:__ \n"
             for(i = 0; i < this.mTasks.length; i++)
             {
-                str += "id: "+ i +"  Tag: " + this.mTasks[i].tag + " \n";
-                str += "+" + this.mTasks[i].description + " \n";
+                str += "*id: "+ i +"  Tag: " + this.mTasks[i].tag + "* \n";
+                str += "**" + this.mTasks[i].description + "** \n";
             }
 
-            return str +"```";
+            return str;
 
         } 
         
-        this.loadFromJSON = function(obj)
-        {
+        this.loadFromJSON = function(obj){
             this.mName = obj.mName;
             this.mTasks = obj.mTasks;
         }
@@ -99,19 +93,16 @@ bot.on('ready', function (evt) {
     logger.info('Logged in as: ');
     logger.info(bot.username + ' - (' + bot.id + ')');
 });
-bot.on('message', function (user, userID, channelID, message, evt) 
-{
+bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
-    if (message.substring(0, 1) == '!')
-    {
+    if (message.substring(0, 1) == '!') {
         var args = message.substring(1).split(' ');
         
         var cmd = args[0].toLowerCase();
         
         args = args.splice(1);
-        switch(cmd)
-        {
+        switch(cmd) {
 
             case 'help':
                 bot.sendMessage({
@@ -163,8 +154,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
                                     to: channelID,
                                     message: "Added task"
                                 });
-                            }
-                            else
+                            }else
                             {
                                 bot.sendMessage({
                                     to: channelID,
@@ -174,6 +164,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
                             break;
 
                         case 'addtimed':
+
                             bot.sendMessage({
                                 to: channelID,
                                 message: "Not ready"
@@ -214,8 +205,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
                         
                     }
 
-                }
-                else
+                }else
                 {
                     bot.sendMessage({
                         to: channelID,
@@ -263,6 +253,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
                             break;
 
                         case 'addtimed':
+
                             bot.sendMessage({
                                 to: channelID,
                                 message: "Not ready"
@@ -303,8 +294,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
                         
                     }
 
-                }
-                else
+                }else
                 {
                     bot.sendMessage({
                         to: channelID,
@@ -341,8 +331,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
                                     to: channelID,
                                     message: "Added task"
                                 });
-                            }
-                            else
+                            }else
                             {
                                 bot.sendMessage({
                                     to: channelID,
@@ -352,6 +341,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
                             break;
 
                         case 'addtimed':
+
                             bot.sendMessage({
                                 to: channelID,
                                 message: "Not ready"
@@ -392,8 +382,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
                         
                     }
 
-                }
-                else
+                }else
                 {
                     bot.sendMessage({
                         to: channelID,
@@ -435,8 +424,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
                     
                 }
 
-            }
-            else
+            }else
             {
                 bot.sendMessage({
                     to: channelID,
@@ -508,7 +496,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
                         });
                         break;
                     
-                    case 'josh':
+                        case 'josh':
                         josh.tasks.clearTasks()
                         fs.writeFile("./josh.json", JSON.stringify(josh), (err) => {
                             if (err) console.error(err)
@@ -522,9 +510,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
                     
                 }
 
-            }
-            else
-            {
+            }else{
 
                 bot.sendMessage({
                     to: channelID,
